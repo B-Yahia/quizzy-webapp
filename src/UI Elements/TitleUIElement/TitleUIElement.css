@@ -1,0 +1,14 @@
+.title_container{
+    width: 100%;
+    background-color: whitesmoke;
+    min-height: 10px;
+    padding: 10px;
+    border-radius: 7px;
+
+}
+.title_container p{
+    font-weight: 800;
+    color: rgb(42, 42, 42);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}

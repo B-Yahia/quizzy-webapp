@@ -1,0 +1,47 @@
+.login_container{
+    width: 100%;
+    height: 100%;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.login_form{
+    width: 100%;
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.login_form > div {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login_form label {
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.login_form input {
+    padding: 5px 10px;
+    background-color: rgb(211, 235, 255);  
+    border-radius: 5px;  
+    outline: none;
+}
+
+.login_container > button {
+    padding: 10px 20px;
+    font-size: large;
+    font-weight: bolder;
+    border: none;
+    background-color: aliceblue;
+}

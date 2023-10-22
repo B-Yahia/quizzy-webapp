@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./Pages/HomePage/HomePage";
+import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
+import ProfilePage from "./Pages/ProfilePage/ProfilePage";
+import QuizCreationPage from "./Pages/QuizCreationPage/QuizCreationPage";
+import PublicQuizzes from "./Pages/PublicQuizzes/PublicQuizzes";
+import QuizPage from "./Pages/QuizPage/QuizPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="app_container">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/creation" element={<QuizCreationPage />} />
+          <Route path="/public" element={<PublicQuizzes />} />
+          <Route path="/quiz/:id" element={<QuizPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
     </div>
   );
 }

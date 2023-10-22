@@ -1,0 +1,21 @@
+
+.page_container > button{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 10px;
+    background-color: yellowgreen;
+    border: none;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.user_info{
+    color: aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 20px;
+}

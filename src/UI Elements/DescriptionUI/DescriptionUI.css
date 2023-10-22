@@ -1,0 +1,14 @@
+.description_container{
+    width: 100%;
+    background-color: whitesmoke;
+    min-height: 10px;
+    padding: 10px;
+    border-radius: 7px;
+}
+.description_container p{
+        color: black;
+        letter-spacing: 1px;
+        font-size: 12px;
+        font-weight: 500;
+    
+}
