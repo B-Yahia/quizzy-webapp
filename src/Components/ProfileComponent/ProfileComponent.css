@@ -4,6 +4,19 @@
     color: aliceblue;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+.profile_component_container > div {
+    height: 100%;
+    max-height: 400px;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    padding: 20px;
+    background-color: var(--bg-color4);
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
 }

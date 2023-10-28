@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import QuizInfoCard from "../../Components/QuizInfoCard/QuizInfoCard";
+import { Link } from "react-router-dom";
+import "./PublicQuizzes.css";
+import PublicQuizCard from "../../Components/Cards/Quiz/PublicQuizCard/PublicQuizCard";
 
 function PublicQuizzes() {
   const [quizzes, setQuizzes] = useState([]);
@@ -25,8 +27,13 @@ function PublicQuizzes() {
         Here you can find quizzes that are open for everyone to take. These will
         be updated regularly with new content.
       </p>
+      <button className="go_home_btn">
+        <Link to={"/"} style={{ color: "inherit", textDecoration: "inherit" }}>
+          Home Page
+        </Link>
+      </button>
       {quizzes.map((quiz) => (
-        <QuizInfoCard quiz={quiz} key={quiz.id} />
+        <PublicQuizCard quiz={quiz} key={quiz.id} />
       ))}
     </div>
   );

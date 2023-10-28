@@ -4,18 +4,32 @@
     top: 0px;
     left: 0px;
     padding: 10px;
-    background-color: yellowgreen;
+    background-color: var(--bg-color4);
     border: none;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .user_info{
     color: aliceblue;
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 25px;
     padding: 10px 20px;
-    border: 1px solid white;
-    border-radius: 20px;
+    border: 1px solid black;
+    border-radius: 50px;
+    margin: 30px 20px;
+}
+.user_info > p {
+    letter-spacing: 1px;
+    font-size: large;
+    padding: 5px 20px;
+    font-weight: 600;
+    background-color: var(--bg-color2);
+    border-radius: 100px;
+    color: black;
+
 }

@@ -13,16 +13,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid white;
+    gap: 60px;
 }
 .side_column{
     width:30%;
     height: 100%;
-    border: 1px solid greenyellow;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: var(--bg-color3);
 }
 .home_Page_btns{
     width:100%;
@@ -30,7 +30,34 @@
     display: flex;
     justify-content:space-around;
     align-items: center;
-    background-color: red;
+}
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 90px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
 }
 
 

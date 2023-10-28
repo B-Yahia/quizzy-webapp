@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import quizTopics from "../Data/QuizCategoriesData";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { nextStep, addTitleAndDesc } from "../../ReduxStrore/QuizSlice";
 import "./CreateQuizSteps.css";
+import Chip1 from "../../UI Elements/Chip/Chip1/Chip1";
+import Chip3 from "../../UI Elements/Chip/Chip3/Chip3";
+import { addNotification } from "../../ReduxStrore/NotifSlice";
 
 function CreateQuizStep1() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const quiz = useSelector((state) => state.quiz);
+  const [title, setTitle] = useState(quiz.title);
+  const [description, setDescription] = useState(quiz.description);
   const [tag, setTag] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [tags, setTags] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(quiz.category);
+  const [tags, setTags] = useState(quiz.tags);
   const [categories, setCategories] = useState(quizTopics);
   const dispatch = useDispatch();
 
@@ -19,18 +23,26 @@ function CreateQuizStep1() {
       setTags((prevTags) => [...prevTags, tag]);
       setTag("");
     } else {
-      console.log("make sure that the input is not empty");
+      dispatch(addNotification("The text field is emplty"));
     }
   };
 
   const moveToNextStep = (e) => {
     e.preventDefault();
-    dispatch(nextStep());
-    dispatch(addTitleAndDesc({ title, tags, description, selectedCategory }));
+    if (title.length < 5) {
+      dispatch(addNotification("Please write a title "));
+    } else if (selectedCategory.length === 0) {
+      dispatch(addNotification("Select one category"));
+    } else if (description.length === 0) {
+      dispatch(addNotification("write a description"));
+    } else {
+      dispatch(nextStep());
+      dispatch(addTitleAndDesc({ title, tags, description, selectedCategory }));
+    }
   };
 
   const selectCategory = (e, id) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     setCategories((prevCategories) => {
       const deselected = prevCategories.map((cat) => {
         return { ...cat, selected: false };
@@ -45,6 +57,16 @@ function CreateQuizStep1() {
     });
   };
 
+  useEffect(() => {
+    if (quiz.category) {
+      categories.forEach((element) => {
+        if (element.categoryName === quiz.category) {
+          selectCategory(null, element.id);
+        }
+      });
+    }
+  }, []);
+
   return (
     <div className="quiz_steps_creation_container">
       <div className="quiz_title">
@@ -58,17 +80,11 @@ function CreateQuizStep1() {
       <div className="quiz_categories">
         {categories.map((topic) =>
           topic.selected ? (
-            <div key={topic.id} className="quiz_category color_active">
-              <p>{topic.categoryName}</p>
-            </div>
+            <Chip1 key={topic.id} text={topic.categoryName} />
           ) : (
-            <div
-              key={topic.id}
-              className="quiz_category"
-              onClick={(e) => selectCategory(e, topic.id)}
-            >
-              <p>{topic.categoryName}</p>
-            </div>
+            <span key={topic.id} onClick={(e) => selectCategory(e, topic.id)}>
+              <Chip3 text={topic.categoryName} />
+            </span>
           )
         )}
       </div>
@@ -79,15 +95,13 @@ function CreateQuizStep1() {
           value={tag}
           onChange={(e) => setTag(e.target.value)}
         />
-        <button onClick={addTagToList} className="reusable_btn">
+        <button onClick={addTagToList} className="btn1">
           +
         </button>
       </div>
       <div className="tags_display">
         {tags.map((tag, index) => (
-          <div key={index} className="single_tag_display">
-            <p>{tag}</p>
-          </div>
+          <Chip1 key={index} text={tag} />
         ))}
       </div>
       <div className="quiz_description">
@@ -99,7 +113,7 @@ function CreateQuizStep1() {
         />
       </div>
       <div className="next_btn">
-        <button className="reusable_btn" onClick={moveToNextStep}>
+        <button className="btn1" onClick={moveToNextStep}>
           Next
         </button>
       </div>

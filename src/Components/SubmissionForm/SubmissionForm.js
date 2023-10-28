@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./SubmissionForm.css";
+import axios from "axios";
+import Participation from "../Participation/Participation";
+import { Link } from "react-router-dom";
 
 function SubmissionForm(props) {
+  const [participationRes, setParticipationRes] = useState();
   const [firtName, setFirstName] = useState("");
   const [lastName, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -19,6 +23,7 @@ function SubmissionForm(props) {
       .post(url, participation)
       .then((resp) => {
         console.log(resp);
+        setParticipationRes(resp.data);
       })
       .catch((error) => {
         console.log(error);
@@ -50,9 +55,18 @@ function SubmissionForm(props) {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <button onClick={submitAll} className="reusable_btn">
+      <button onClick={submitAll} className="btn1">
         submit
       </button>
+      {!!participationRes && <Participation participation={participationRes} />}
+      {!!participationRes && (
+        <Link
+          to={"/public"}
+          style={{ color: "inherit", textDecoration: "inherit" }}
+        >
+          <button className="btn1">Go to Quizzes page</button>
+        </Link>
+      )}
     </div>
   );
 }

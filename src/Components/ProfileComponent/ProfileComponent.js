@@ -9,17 +9,20 @@ function ProfileComponent() {
 
   return (
     <div className="profile_component_container">
-      <h1>Profile Component</h1>
-      <button>
-        <Link
-          to={"/profile"}
-          style={{ color: "inherit", textDecoration: "inherit" }}
-        >
-          Go Back to Dashboard
-        </Link>
-      </button>
-      <br />
-      <button onClick={() => dispatch(logoutRed())}>Logout</button>
+      <div>
+        <h1>Profile Component</h1>
+        <button className="btn1">
+          <Link
+            to={"/profile"}
+            style={{ color: "inherit", textDecoration: "inherit" }}
+          >
+            Go Back to Dashboard
+          </Link>
+        </button>
+        <button onClick={() => dispatch(logoutRed())} className="btn3">
+          Logout
+        </button>
+      </div>
     </div>
   );
 }

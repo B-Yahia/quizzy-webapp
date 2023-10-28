@@ -1,14 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import TitleUIElement from "../../UI Elements/TitleUIElement/TitleUIElement";
-import "./QuizPage.css";
 import SubmissionForm from "../../Components/SubmissionForm/SubmissionForm";
+import TextContainer1 from "../../UI Elements/TextContainer/TextContainer1/TextContainer1";
+import "./QuizPage.css";
 
 function QuizPage() {
-  const [firtName, setFirstName] = useState("");
-  const [lastName, setLastname] = useState("");
-  const [email, setEmail] = useState("");
   const [quiz, setQuiz] = useState();
   const [step, setStep] = useState(0);
   const [quizAnswersList, setQuizAnswersList] = useState([]);
@@ -57,7 +54,7 @@ function QuizPage() {
 
       {!!quiz && (
         <div className="card_ask_question_container">
-          <TitleUIElement text={quiz.title} />
+          <TextContainer1 text={quiz.title} />
           {step === quiz.questions.length ? (
             <SubmissionForm
               questionResponseList={quizAnswersList}
@@ -92,7 +89,7 @@ function QuizPage() {
                         {answer.statement}
                       </label>
                     ))}
-                    <button onClick={nextQuestion} className="reusable_btn">
+                    <button onClick={nextQuestion} className="btn1">
                       Submit answer
                     </button>
                   </div>

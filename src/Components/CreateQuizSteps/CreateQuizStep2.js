@@ -1,27 +1,33 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   nextStep,
   addQuestion,
   previousStep,
 } from "../../ReduxStrore/QuizSlice";
 import "./CreateQuizSteps.css";
-import QuestionCard from "../QuestionCard/QuestionCard";
+import { addNotification } from "../../ReduxStrore/NotifSlice";
+import QuestionCard from "../Cards/Question/QuestionsCard/QuestionsCard";
 
 function CreateQuizStep2() {
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
   const [answer, setAnswer] = useState("");
   const dispatch = useDispatch();
+  const questionsLength = useSelector((state) => state.quiz.questions.length);
 
   const addAnswer = (e) => {
     e.preventDefault();
-    const newAnswer = {
-      statement: answer,
-      correct: false,
-    };
-    setAnswers((prevAnswers) => [...prevAnswers, newAnswer]);
-    setAnswer("");
+    if (answer.length !== 0) {
+      const newAnswer = {
+        statement: answer,
+        correct: false,
+      };
+      setAnswers((prevAnswers) => [...prevAnswers, newAnswer]);
+      setAnswer("");
+    } else {
+      dispatch(addNotification("Please enter an answer"));
+    }
   };
 
   function updateAnswerCorrectness(index, value) {
@@ -37,19 +43,31 @@ function CreateQuizStep2() {
 
   const addQuestionToList = (e) => {
     e.preventDefault();
-    const newQuestion = {
-      statement: question,
-      answers: answers,
-    };
-    dispatch(addQuestion({ newQuestion }));
-    setQuestion("");
-    setAnswers([]);
-    setAnswer("");
+    if (answers.length < 2) {
+      dispatch(addNotification("You need at least two options for a question"));
+    } else if (!answers.some((answer) => answer.correct)) {
+      dispatch(addNotification("At least one answer needs to be correct"));
+    } else if (question.length < 5) {
+      dispatch(addNotification("Question should be longer than 4 characters"));
+    } else {
+      const newQuestion = {
+        statement: question,
+        answers: answers,
+      };
+      dispatch(addQuestion({ newQuestion }));
+      setQuestion("");
+      setAnswers([]);
+      setAnswer("");
+    }
   };
 
   const moveToNextStep = (e) => {
     e.preventDefault();
-    dispatch(nextStep());
+    if (questionsLength < 3) {
+      dispatch(addNotification("The quiz must have at least 3 questions"));
+    } else {
+      dispatch(nextStep());
+    }
   };
   const moveBackward = (e) => {
     e.preventDefault();
@@ -65,7 +83,7 @@ function CreateQuizStep2() {
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
         />
-        <button onClick={addQuestionToList} className="reusable_btn">
+        <button onClick={addQuestionToList} className="btn1">
           Add question
         </button>
       </div>
@@ -76,7 +94,7 @@ function CreateQuizStep2() {
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
         />
-        <button onClick={addAnswer} className="reusable_btn">
+        <button onClick={addAnswer} className="btn1">
           +
         </button>
       </div>
@@ -111,10 +129,10 @@ function CreateQuizStep2() {
       </div>
       <QuestionCard />
       <div className="step_btns">
-        <button onClick={moveBackward} className="reusable_btn">
+        <button onClick={moveBackward} className="btn1">
           Step back
         </button>
-        <button onClick={moveToNextStep} className="reusable_btn">
+        <button onClick={moveToNextStep} className="btn1">
           Next step
         </button>
       </div>

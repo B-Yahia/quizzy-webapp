@@ -1,7 +1,6 @@
 .card_ask_question_container{
     width: 70%;
     min-width: 700px;
-    border: 1px solid greenyellow;
     padding: 10px;
     border-radius: 10px;
     display: flex;

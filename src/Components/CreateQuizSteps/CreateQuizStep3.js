@@ -1,13 +1,16 @@
 import React from "react";
 import "./CreateQuizSteps.css";
 import { useDispatch, useSelector } from "react-redux";
-import QuizCard from "../QuizCard/QuizCard";
 import { cleanQuizEntity, previousStep } from "../../ReduxStrore/QuizSlice";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { addNotification } from "../../ReduxStrore/NotifSlice";
+import CreationQuizCard from "../Cards/Quiz/CreationQuizCard/CreationQuizCard";
 
 function CreateQuizStep3() {
   const dispatch = useDispatch();
   const quizData = useSelector((state) => state.quiz);
+  const navigate = useNavigate();
 
   const moveBackward = (e) => {
     e.preventDefault();
@@ -23,20 +26,21 @@ function CreateQuizStep3() {
       .then((response) => {
         console.log(response);
         dispatch(cleanQuizEntity());
+        navigate("/profile");
       })
       .catch((error) => {
-        console.log(error);
+        dispatch(addNotification("Error has occured"));
       });
   };
 
   return (
     <div className="quiz_steps_creation_container">
-      <QuizCard />
+      <CreationQuizCard />
       <div className="step_btns">
-        <button className="reusable_btn" onClick={moveBackward}>
+        <button className="btn1" onClick={moveBackward}>
           Add more questions
         </button>
-        <button className="reusable_btn" onClick={saveData}>
+        <button className="btn1" onClick={saveData}>
           Save Quiz
         </button>
       </div>

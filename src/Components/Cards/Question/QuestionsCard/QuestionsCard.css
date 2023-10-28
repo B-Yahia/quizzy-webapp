@@ -1,0 +1,14 @@
+.questions_display_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.question_display_container{
+    width: 100%;
+    position: relative;
+    background-color: var(--bg-color5);
+    
+}

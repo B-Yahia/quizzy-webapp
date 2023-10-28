@@ -1,0 +1,45 @@
+.notification_container {
+    background-color: var(--bg-color1);
+    height: fit-content;
+    min-height: 50px;
+    min-width: 100px;
+    width: fit-content;
+    color: black;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    z-index: 4;
+
+}
+.notofication{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 20px 35px;
+}
+.hide{
+    display: none;
+    
+}
+.hide_btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    color: white;
+    background-color: red;
+    border: none;
+
+}
+.notification_container p {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: small;
+    padding: 7px;
+}

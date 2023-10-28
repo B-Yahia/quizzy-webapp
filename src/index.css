@@ -12,13 +12,16 @@ code {
     monospace;
 }
 :root {
-  /* create variables  */
+    --bg-color1: #e0f0ea;
+    --bg-color2: #95adbe;
+    --bg-color3: #574f7d;
+    --bg-color4: #503a65;
+    --bg-color5: #3c2a4d;
 }
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  
+  box-sizing: border-box;  
 }
 
 /* Scroll bar styling */
@@ -28,16 +31,16 @@ code {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: white; 
+  background: var(--bg-color3); 
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
-  border: 1px solid yellowgreen; 
+  border: 1px solid var(--bg-color1); 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: var(--bg-color2); 
 }

@@ -6,6 +6,7 @@ import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 import QuizCreationPage from "./Pages/QuizCreationPage/QuizCreationPage";
 import PublicQuizzes from "./Pages/PublicQuizzes/PublicQuizzes";
 import QuizPage from "./Pages/QuizPage/QuizPage";
+import Notification from "./Components/Notification/Notification";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/quiz/:id" element={<QuizPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        <Notification />
       </div>
     </div>
   );

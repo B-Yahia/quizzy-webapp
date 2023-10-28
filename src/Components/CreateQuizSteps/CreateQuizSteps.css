@@ -1,5 +1,4 @@
 .quiz_steps_creation_container{
-    border: 1px solid yellowgreen;
     min-width: 600px;
     width: 70%;
     padding: 10px;
@@ -8,6 +7,10 @@
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+    margin-top: 60px;
+    background-color: var(--bg-color4);
+    border-radius: 20px;
+    padding: 30px;
 }
 .quiz_title{
     display: flex;
@@ -46,21 +49,7 @@
     gap: 15px;
     cursor: pointer;
 }
-.quiz_category , .single_tag_display{
-    background-color: white;
-    padding: 5px 7px;
-    border-radius:15px ;
-}
-.single_tag_display{
-    border: 2px solid yellowgreen;
-}
-.quiz_category p ,.single_tag_display p{
-    color: black;
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 500;
-}
+
 .quiz_tags{
     width: 100%;
     display: flex;
@@ -78,16 +67,6 @@
     width: 100%;
     padding: 20px;
     resize: vertical;
-}
-.color_active p{
-    color: yellowgreen !important;
-}
-
-.color_active{
-    border: 1px solid greenyellow;
-    
-    background-color: black;
-    scale: 1.2;
 }
 /* styling for the second step  */
 .question_input_container , .answer_input_container{

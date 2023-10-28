@@ -1,0 +1,19 @@
+.profile_quiz_card_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    border-bottom: 2px solid var(--bg-color1);
+}
+.profile_quiz_card_btns{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 5px;
+    gap: 30px;
+
+}

@@ -1,0 +1,10 @@
+.public_quiz_card_container{
+    width: 80%;
+    min-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ProfilePage.css";
 import { Link } from "react-router-dom";
-import ProfileQuizzesCard from "../../Components/ProfileQuizzesCard/ProfileQuizzesCard";
+import ProfileQuizzesMainCard from "../../Components/Cards/Quiz/ProfileQuizzesMainCard/ProfileQuizzesMainCard";
 
 function ProfilePage() {
   const userId = localStorage.getItem("userId");
@@ -42,7 +42,7 @@ function ProfilePage() {
         <p>Date of birth</p>
         <p>{data.email}</p>
       </div>
-      {!!data && <ProfileQuizzesCard quizzes={data.quizzes} />}
+      {!!data && <ProfileQuizzesMainCard quizzes={data.quizzes} />}
     </div>
   );
 }
