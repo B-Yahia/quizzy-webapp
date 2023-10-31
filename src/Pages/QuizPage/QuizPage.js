@@ -36,7 +36,8 @@ function QuizPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      let url = "http://localhost:8080/quiz/" + params.id;
+      let url =
+        "https://quizsurveyapp-production.up.railway.app/quiz/" + params.id;
       axios
         .get(url)
         .then((response) => {

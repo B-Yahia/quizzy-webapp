@@ -2,27 +2,33 @@ import React from "react";
 import SingleQuizInfoCard from "../SingleQuizInfoCard/SingleQuizInfoCard";
 import "./ProfileQuizCard.css";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addNotification } from "../../../../ReduxStrore/NotifSlice";
 
 function ProfileQuizCard(props) {
+  const dispatch = useDispatch();
+
   const deleteQuiz = () => {
-    const url = "http://localhost:8080/quiz/remove/" + props.quiz.id;
+    const url =
+      "https://quizsurveyapp-production.up.railway.app/quiz/remove/" +
+      props.quiz.id;
     axios
       .put(url)
       .then((resp) => {
-        console.log(resp);
-        window.location.reload();
+        dispatch(addNotification("Question removed"));
       })
       .catch((error) => {
         console.log(error);
       });
   };
   const togglePublish = () => {
-    const url = "http://localhost:8080/quiz/public/" + props.quiz.id;
+    const url =
+      "https://quizsurveyapp-production.up.railway.app/quiz/public/" +
+      props.quiz.id;
     axios
       .put(url)
       .then((resp) => {
-        console.log(resp);
-        window.location.reload();
+        dispatch(addNotification("Question published proprety is updated"));
       })
       .catch((error) => {
         console.log(error);
@@ -37,7 +43,7 @@ function ProfileQuizCard(props) {
           Delete
         </button>
         <button className="btn2" onClick={togglePublish}>
-          Publish
+          {props.quiz.publicAccess ? "Published" : "Unpublished"}
         </button>
         <button className="btn1">See Questions</button>
       </div>

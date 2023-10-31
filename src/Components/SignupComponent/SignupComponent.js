@@ -3,6 +3,7 @@ import "./SignupComponent.css";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addNotification } from "../../ReduxStrore/NotifSlice";
+import { loginRed } from "../../ReduxStrore/LoginSlice";
 
 function SignupComponent() {
   const [firstname, SetFirstname] = useState("");
@@ -19,7 +20,8 @@ function SignupComponent() {
     if (password !== confirmPassword) {
       dispatsh(addNotification("passwords do not match"));
     } else {
-      const url = "http://localhost:8080/auth/register";
+      const url =
+        "https://quizsurveyapp-production.up.railway.app/auth/register";
       const newUser = {
         firstName: firstname,
         lastName: lastname,
@@ -32,6 +34,7 @@ function SignupComponent() {
         .post(url, newUser)
         .then((response) => {
           console.log(response);
+          dispatsh(addNotification("account created"));
           setDob("");
           setEmail("");
           setPassword("");
@@ -39,6 +42,7 @@ function SignupComponent() {
           setlastname("");
           SetFirstname("");
           setConfirmPassword("");
+          dispatsh(loginRed());
         })
         .catch((error) => {
           console.log(error.response.data);

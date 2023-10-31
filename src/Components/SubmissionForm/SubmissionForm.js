@@ -11,7 +11,7 @@ function SubmissionForm(props) {
   const [email, setEmail] = useState("");
 
   const submitAll = async () => {
-    let url = "http://localhost:8080/participant";
+    let url = "https://quizsurveyapp-production.up.railway.app/participant";
     const participation = {
       score: 0,
       firstName: firtName,

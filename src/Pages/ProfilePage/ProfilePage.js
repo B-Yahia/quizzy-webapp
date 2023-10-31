@@ -9,7 +9,8 @@ function ProfilePage() {
   const [data, setData] = useState({});
 
   const fetchData = async (e) => {
-    const url = "http://localhost:8080/author/" + userId;
+    const url =
+      "https://quizsurveyapp-production.up.railway.app/author/" + userId;
     axios
       .get(url)
       .then((response) => {
@@ -39,7 +40,7 @@ function ProfilePage() {
           {data.firstName} {data.lastName}
         </p>
         <p> {data.username} </p>
-        <p>Date of birth</p>
+        <p>{data.dateOfBirth}</p>
         <p>{data.email}</p>
       </div>
       {!!data && <ProfileQuizzesMainCard quizzes={data.quizzes} />}

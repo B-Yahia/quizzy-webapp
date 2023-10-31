@@ -8,7 +8,7 @@ function PublicQuizzes() {
   const [quizzes, setQuizzes] = useState([]);
   const fetchData = (e) => {
     axios
-      .get("http://localhost:8080/quiz")
+      .get("https://quizsurveyapp-production.up.railway.app/quiz")
       .then((resp) => {
         setQuizzes(resp.data);
       })

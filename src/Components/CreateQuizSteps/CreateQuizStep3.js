@@ -19,7 +19,8 @@ function CreateQuizStep3() {
   const saveData = async (e) => {
     e.preventDefault();
     const userId = localStorage.getItem("userId");
-    const url = "http://localhost:8080/quiz/" + userId;
+    const url =
+      "https://quizsurveyapp-production.up.railway.app/quiz/" + userId;
     console.log(url);
     axios
       .post(url, quizData)

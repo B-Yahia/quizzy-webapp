@@ -13,7 +13,7 @@ function LoginComponent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url = "http://localhost:8080/auth/login";
+    const url = "https://quizsurveyapp-production.up.railway.app/auth/login";
     const credentials = {
       username: username,
       password: password,
