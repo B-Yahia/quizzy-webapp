@@ -18,6 +18,7 @@ function ProfileQuizCard(props) {
         dispatch(addNotification("Question removed"));
       })
       .catch((error) => {
+        dispatch(addNotification("Something when wrong"));
         console.log(error);
       });
   };
@@ -31,6 +32,7 @@ function ProfileQuizCard(props) {
         dispatch(addNotification("Question published proprety is updated"));
       })
       .catch((error) => {
+        dispatch(addNotification("Something whent wrong"));
         console.log(error);
       });
   };
