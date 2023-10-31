@@ -22,7 +22,7 @@ function ProfilePage() {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   return (
     <div className="page_container">
