@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ProfilePage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProfileQuizzesMainCard from "../../Components/Cards/Quiz/ProfileQuizzesMainCard/ProfileQuizzesMainCard";
 
 function ProfilePage() {
   const userId = localStorage.getItem("userId");
   const [data, setData] = useState({});
+  const navigate = useNavigate();
 
   const fetchData = async (e) => {
+    if (e) e.preventDefault();
     const url =
       "https://quizsurveyapp-production.up.railway.app/author/" + userId;
     axios
@@ -22,6 +24,9 @@ function ProfilePage() {
       });
   };
   useEffect(() => {
+    if (!userId) {
+      navigate("/error");
+    }
     fetchData();
   });
 

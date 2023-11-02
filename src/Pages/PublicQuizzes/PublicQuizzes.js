@@ -1,12 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./PublicQuizzes.css";
 import PublicQuizCard from "../../Components/Cards/Quiz/PublicQuizCard/PublicQuizCard";
+import { addNotification } from "../../ReduxStrore/NotifSlice";
 
 function PublicQuizzes() {
+  const navigate = useNavigate();
+  const dispatch = dispatch();
   const [quizzes, setQuizzes] = useState([]);
   const fetchData = (e) => {
+    e.preventDefault();
     axios
       .get("https://quizsurveyapp-production.up.railway.app/quiz")
       .then((resp) => {
@@ -14,12 +18,14 @@ function PublicQuizzes() {
       })
       .catch((error) => {
         console.log(error);
+        dispatch(addNotification("something when wrong"));
+        navigate("/error");
       });
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
   return (
     <div className="page_container">
       <h1 className="page_title">Public Quizzes</h1>

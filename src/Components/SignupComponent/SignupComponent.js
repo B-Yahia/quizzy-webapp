@@ -42,7 +42,6 @@ function SignupComponent() {
           setlastname("");
           SetFirstname("");
           setConfirmPassword("");
-          dispatsh(loginRed());
         })
         .catch((error) => {
           console.log(error.response.data);

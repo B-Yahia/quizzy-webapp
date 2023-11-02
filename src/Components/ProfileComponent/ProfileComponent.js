@@ -6,6 +6,11 @@ import { Link } from "react-router-dom";
 
 function ProfileComponent() {
   const dispatch = useDispatch();
+  const logout = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    dispatch(logoutRed());
+  };
 
   return (
     <div className="profile_component_container">
@@ -19,7 +24,7 @@ function ProfileComponent() {
             Go Back to Dashboard
           </Link>
         </button>
-        <button onClick={() => dispatch(logoutRed())} className="btn3">
+        <button onClick={(e) => logout(e)} className="btn3">
           Logout
         </button>
       </div>
