@@ -3,7 +3,6 @@ import "./SignupComponent.css";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addNotification } from "../../ReduxStrore/NotifSlice";
-import { loginRed } from "../../ReduxStrore/LoginSlice";
 
 function SignupComponent() {
   const [firstname, SetFirstname] = useState("");
