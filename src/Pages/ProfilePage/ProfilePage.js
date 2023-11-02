@@ -8,27 +8,29 @@ function ProfilePage() {
   const userId = localStorage.getItem("userId");
   const [data, setData] = useState({});
   const navigate = useNavigate();
+  const [updated, setUpdated] = useState(false);
 
   const fetchData = async (e) => {
     if (e) e.preventDefault();
-    const url =
-      "https://quizsurveyapp-production.up.railway.app/author/" + userId;
-    axios
-      .get(url)
-      .then((response) => {
-        setData(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  useEffect(() => {
-    if (!userId) {
+    if (userId) {
+      const url =
+        "https://quizsurveyapp-production.up.railway.app/author/" + userId;
+      axios
+        .get(url)
+        .then((response) => {
+          setData(response.data);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
       navigate("/error");
     }
+  };
+  useEffect(() => {
     fetchData();
-  }, []);
+  }, [updated]);
 
   return (
     <div className="page_container">
