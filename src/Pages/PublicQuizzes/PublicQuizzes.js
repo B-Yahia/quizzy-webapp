@@ -26,7 +26,7 @@ function PublicQuizzes() {
 
   useEffect(() => {
     fetchData();
-  });
+  }, []);
   return (
     <div className="page_container">
       <h1 className="page_title">Public Quizzes</h1>

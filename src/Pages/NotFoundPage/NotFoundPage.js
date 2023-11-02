@@ -9,7 +9,7 @@ function NotFoundPage() {
   };
   useEffect(() => {
     setTimeout(redirect, 4000);
-  });
+  }, []);
 
   return (
     <div className="page_container">

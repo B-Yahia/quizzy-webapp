@@ -65,7 +65,7 @@ function CreateQuizStep1() {
         }
       });
     }
-  });
+  }, []);
 
   return (
     <div className="quiz_steps_creation_container">

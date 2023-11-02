@@ -28,7 +28,7 @@ function ProfilePage() {
       navigate("/error");
     }
     fetchData();
-  });
+  }, []);
 
   return (
     <div className="page_container">
