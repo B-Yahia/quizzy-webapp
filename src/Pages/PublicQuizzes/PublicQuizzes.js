@@ -12,7 +12,7 @@ function PublicQuizzes() {
   const [quizzes, setQuizzes] = useState([]);
   const fetchData = useCallback(
     (e) => {
-      e.preventDefault();
+      if (e) e.preventDefault();
       axios
         .get("https://quizsurveyapp-production.up.railway.app/quiz")
         .then((resp) => {
