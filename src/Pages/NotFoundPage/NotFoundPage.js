@@ -4,12 +4,13 @@ import Chip3 from "../../UI Elements/Chip/Chip3/Chip3";
 
 function NotFoundPage() {
   const nav = useNavigate();
-  const redirect = () => {
-    nav("/");
-  };
+
   useEffect(() => {
-    setTimeout(redirect, 4000);
-  }, []);
+    const timeout = setTimeout(() => {
+      nav("/");
+    }, 4000);
+    return () => clearTimeout(timeout);
+  }, [nav]);
 
   return (
     <div className="page_container">

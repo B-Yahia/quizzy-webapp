@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import "./ProfilePage.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,29 +8,32 @@ function ProfilePage() {
   const userId = localStorage.getItem("userId");
   const [data, setData] = useState({});
   const navigate = useNavigate();
-  const [updated, setUpdated] = useState(false);
 
-  const fetchData = async (e) => {
-    if (e) e.preventDefault();
-    if (userId) {
-      const url =
-        "https://quizsurveyapp-production.up.railway.app/author/" + userId;
-      axios
-        .get(url)
-        .then((response) => {
-          setData(response.data);
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      navigate("/error");
-    }
-  };
+  const fetchData = useCallback(
+    async (e) => {
+      if (e) e.preventDefault();
+      if (userId) {
+        const url =
+          "https://quizsurveyapp-production.up.railway.app/author/" + userId;
+        axios
+          .get(url)
+          .then((response) => {
+            setData(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        navigate("/error");
+      }
+    },
+    [userId, navigate]
+  );
+
   useEffect(() => {
     fetchData();
-  }, [updated]);
+  }, [fetchData]);
 
   return (
     <div className="page_container">
