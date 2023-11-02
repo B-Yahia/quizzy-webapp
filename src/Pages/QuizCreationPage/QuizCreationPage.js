@@ -12,7 +12,7 @@ function QuizCreationPage() {
   const nav = useNavigate();
   useEffect(() => {
     if (!localStorage.getItem("userId")) nav("/error");
-  }, []);
+  }, [nav]);
   return (
     <div className="page_container">
       <div className="page_title">Create quiz step : " {step} "</div>
