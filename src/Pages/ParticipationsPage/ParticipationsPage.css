@@ -1,0 +1,19 @@
+.participations_page_container{
+    width: 70%;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    background-color:var(--bg-color1);
+    padding: 5px 20px;
+}
+.participation{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+}

@@ -4,10 +4,11 @@ import "./ProfileQuizCard.css";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addNotification } from "../../../../ReduxStrore/NotifSlice";
+import { useNavigate } from "react-router-dom";
 
 function ProfileQuizCard(props) {
   const dispatch = useDispatch();
-
+  const nav = useNavigate();
   const deleteQuiz = () => {
     const url =
       "https://quizsurveyapp-production.up.railway.app/quiz/remove/" +
@@ -37,6 +38,15 @@ function ProfileQuizCard(props) {
       });
   };
 
+  const goQuestionsPage = async (e) => {
+    e.preventDefault();
+    nav("/profile/quiz/" + props.quiz.id);
+  };
+
+  const goToParticipationsList = async (e) => {
+    e.preventDefault();
+    nav("/profile/participations/" + props.quiz.id);
+  };
   return (
     <div className="profile_quiz_card_container">
       <SingleQuizInfoCard quiz={props.quiz} />
@@ -47,7 +57,12 @@ function ProfileQuizCard(props) {
         <button className="btn2" onClick={togglePublish}>
           {props.quiz.publicAccess ? "Published" : "Unpublished"}
         </button>
-        <button className="btn1">See Questions</button>
+        <button className="btn1" onClick={(e) => goQuestionsPage(e)}>
+          See Questions
+        </button>
+        <button className="btn1" onClick={(e) => goToParticipationsList(e)}>
+          See Participations
+        </button>
       </div>
     </div>
   );

@@ -38,7 +38,6 @@ function ProfilePage() {
   return (
     <div className="page_container">
       <div className="page_title">Welcome</div>
-
       <button>
         <Link to={"/"} style={{ color: "inherit", textDecoration: "inherit" }}>
           Go Home Page

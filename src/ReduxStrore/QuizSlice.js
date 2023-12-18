@@ -46,7 +46,7 @@ const QuizSlice = createSlice({
       state.questions.splice(index, 1, updatedQuestion);
     },
     cleanQuizEntity(state) {
-      state.tite = "";
+      state.title = "";
       state.description = "";
       state.category = "";
       state.questions = [];

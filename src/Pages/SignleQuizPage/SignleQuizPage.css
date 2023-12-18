@@ -1,0 +1,15 @@
+.single_quiz_page_container{
+    width: 70%;
+    min-width: 600px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+.single_quiz_row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}

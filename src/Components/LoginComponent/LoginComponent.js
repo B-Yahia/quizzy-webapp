@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./LoginComponent.css";
 import { loginRed } from "../../ReduxStrore/LoginSlice";
+import { addNotification } from "../../ReduxStrore/NotifSlice";
 
 function LoginComponent() {
   const [username, setUsername] = useState("");
@@ -28,6 +29,8 @@ function LoginComponent() {
       })
       .catch((error) => {
         console.log(error);
+        if (error.response.data.Messages)
+          dispatch(addNotification(error.response.data.Messages));
       });
   };
   return (

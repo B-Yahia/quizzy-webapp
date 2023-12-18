@@ -4,7 +4,7 @@ import LoginComponent from "../../Components/LoginComponent/LoginComponent";
 import SignupComponent from "../../Components/SignupComponent/SignupComponent";
 import ProfileComponent from "../../Components/ProfileComponent/ProfileComponent";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Outlet, Route, Routes } from "react-router-dom";
 
 function HomePage() {
   const logged = useSelector((state) => state.login.value);
@@ -27,21 +27,19 @@ function HomePage() {
       </div>
       <div className="side_column">
         {logged ? (
-          <></>
-        ) : (
-          <div className="home_Page_btns">
-            <button onClick={() => setToggle(false)} className="btn1">
-              Login
-            </button>
-            <button onClick={() => setToggle(true)} className="btn1">
-              Sign-up
-            </button>
-          </div>
-        )}
-        {logged ? (
           <ProfileComponent />
         ) : (
-          <>{toggle ? <SignupComponent /> : <LoginComponent />}</>
+          <>
+            <div className="home_Page_btns">
+              <Link to={"/login"} className="btn1">
+                Login
+              </Link>
+              <Link to={"/signup"} className="btn1">
+                Sign-up
+              </Link>
+            </div>
+            <Outlet />
+          </>
         )}
       </div>
     </div>
